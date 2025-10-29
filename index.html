@@ -1,0 +1,2227 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contrologic Solutions - Transforme sua fábrica com IoT e Automação Industrial. Reduza custos, aumente produtividade e entre na Indústria 4.0.">
+    <title>Contrologic Solutions | Transformação Digital Industrial</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-orange: #FF9900;
+            --dark-bg: #1A1A1A;
+            --light-bg: #F5F5F5;
+            --white: #FFFFFF;
+            --gray: #666666;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Animações */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes shine {
+            from { background-position: -200% center; }
+            to { background-position: 200% center; }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Header */
+        header {
+            background: var(--dark-bg);
+            padding: 1.5rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            transition: all 0.3s;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-img {
+            height: 50px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-orange);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section com Storytelling */
+        .hero {
+            background: linear-gradient(135deg, #1A1A1A 0%, #2D2D2D 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 2rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(255, 153, 0, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            animation: fadeInLeft 1s ease-out;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 153, 0, 0.2);
+            color: var(--primary-orange);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--primary-orange);
+            animation: pulse 2s infinite;
+        }
+
+        .hero-content h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .hero-content h1 .highlight {
+            color: var(--primary-orange);
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero-content h1 .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--primary-orange);
+            animation: shine 3s infinite;
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            color: #CCCCCC;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .hero-content .subtext {
+            font-size: 1rem;
+            color: #999;
+            margin-bottom: 2.5rem;
+            font-style: italic;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-orange) 0%, #FF8800 100%);
+            color: var(--white);
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.15rem;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(255, 153, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 153, 0, 0.5);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            text-align: left;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary-orange);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #999;
+        }
+
+        .hero-image {
+            position: relative;
+            animation: fadeInRight 1s ease-out;
+        }
+
+        .hero-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Painéis Elétricos Destaque */
+        .paineis-destaque {
+            background: linear-gradient(135deg, #1A1A1A 0%, #2D2D2D 100%);
+            padding: 5rem 2rem;
+            color: white;
+        }
+
+        .paineis-hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+            align-items: start;
+        }
+
+        .paineis-badge {
+            background: var(--primary-orange);
+            color: white;
+            display: inline-block;
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .paineis-content h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+        }
+
+        .paineis-desc {
+            font-size: 1.2rem;
+            color: #CCC;
+            margin-bottom: 3rem;
+            line-height: 1.7;
+        }
+
+        .paineis-tipos {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .tipo-painel {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border: 2px solid rgba(255, 153, 0, 0.2);
+            transition: all 0.3s;
+        }
+
+        .tipo-painel:hover {
+            border-color: var(--primary-orange);
+            background: rgba(255, 153, 0, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .tipo-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tipo-painel h4 {
+            font-size: 1.2rem;
+            color: white;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .tipo-painel p {
+            font-size: 0.95rem;
+            color: #CCC;
+        }
+
+        .paineis-specs {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 2px solid rgba(255, 153, 0, 0.2);
+        }
+
+        .paineis-specs h3 {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            color: var(--primary-orange);
+        }
+
+        .specs-lista {
+            list-style: none;
+            padding: 0;
+        }
+
+        .specs-lista li {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            align-items: flex-start;
+        }
+
+        .specs-lista li:last-child {
+            margin-bottom: 0;
+        }
+
+        .spec-icon {
+            background: var(--primary-orange);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .specs-lista strong {
+            color: white;
+            font-size: 1.1rem;
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        .specs-lista p {
+            color: #CCC;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .paineis-process {
+            background: rgba(255, 153, 0, 0.1);
+            padding: 3rem;
+            border-radius: 20px;
+            margin-bottom: 3rem;
+            border: 2px solid rgba(255, 153, 0, 0.3);
+        }
+
+        .paineis-process h3 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            color: white;
+        }
+
+        .process-steps {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .step {
+            text-align: center;
+            flex: 1;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-orange);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin: 0 auto 1rem;
+            box-shadow: 0 5px 20px rgba(255, 153, 0, 0.4);
+        }
+
+        .step h4 {
+            font-size: 1.2rem;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .step p {
+            font-size: 0.9rem;
+            color: #CCC;
+        }
+
+        .step-arrow {
+            font-size: 2rem;
+            color: var(--primary-orange);
+            margin: 0 1rem;
+            font-weight: bold;
+        }
+
+        .paineis-cta {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 2px solid var(--primary-orange);
+        }
+
+        .paineis-cta h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .paineis-cta p {
+            font-size: 1.2rem;
+            color: #CCC;
+            margin-bottom: 2rem;
+        }
+
+        .btn-paineis {
+            display: inline-block;
+            background: var(--primary-orange);
+            color: white;
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.15rem;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(255, 153, 0, 0.4);
+        }
+
+        .btn-paineis:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 153, 0, 0.5);
+        }
+
+        /* Problema-Solução Section */
+        .problema-solucao {
+            padding: 6rem 2rem;
+            background: var(--white);
+        }
+
+        .problema-solucao .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .problema-box {
+            background: linear-gradient(135deg, #FF5555 0%, #CC0000 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 20px;
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .problema-box::before {
+            content: '⚠️';
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 4rem;
+            opacity: 0.2;
+        }
+
+        .problema-box h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .problema-lista {
+            list-style: none;
+            padding: 0;
+        }
+
+        .problema-lista li {
+            padding: 1rem 0;
+            font-size: 1.1rem;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .problema-lista li::before {
+            content: '✗';
+            position: absolute;
+            left: 0;
+            color: #FFD700;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .solucao-box {
+            background: linear-gradient(135deg, #00CC88 0%, #00AA66 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .solucao-box::before {
+            content: '✓';
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 6rem;
+            opacity: 0.2;
+        }
+
+        .solucao-box h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .solucao-lista {
+            list-style: none;
+            padding: 0;
+        }
+
+        .solucao-lista li {
+            padding: 1rem 0;
+            font-size: 1.1rem;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .solucao-lista li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #FFD700;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--dark-bg);
+        }
+
+        .section-title .highlight {
+            color: var(--primary-orange);
+            position: relative;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--gray);
+            margin-bottom: 4rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Timeline de Transformação */
+        .timeline {
+            background: var(--light-bg);
+        }
+
+        .timeline-container {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--primary-orange);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) {
+            flex-direction: row;
+        }
+
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-content {
+            width: 45%;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .timeline-number {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 50px;
+            background: var(--primary-orange);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.3rem;
+            z-index: 2;
+        }
+
+        .timeline-content h3 {
+            color: var(--dark-bg);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .timeline-content p {
+            color: var(--gray);
+            line-height: 1.7;
+        }
+
+        /* Sobre */
+        .sobre {
+            background: var(--light-bg);
+            padding: 6rem 2rem;
+        }
+
+        .sobre-simples {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .sobre-simples .destaque {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--dark-bg);
+            margin-bottom: 2rem;
+        }
+
+        .sobre-simples p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+        }
+
+        .contato-rapido {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .contato-rapido h4 {
+            font-size: 1.3rem;
+            color: var(--dark-bg);
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-whatsapp-small {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: #25D366;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.3);
+        }
+
+        .btn-whatsapp-small:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+        }
+
+        .local {
+            margin-top: 1rem;
+            color: var(--gray);
+            font-size: 1rem;
+        }
+
+        /* Soluções Grid */
+        .solucoes {
+            background: var(--light-bg);
+        }
+
+        .solucoes-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .solucao-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.4s;
+            border: 2px solid transparent;
+            cursor: pointer;
+        }
+
+        .solucao-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 50px rgba(255, 153, 0, 0.3);
+            border-color: var(--primary-orange);
+        }
+
+        .solucao-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            transition: transform 0.4s;
+        }
+
+        .solucao-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .solucao-content {
+            padding: 2rem;
+        }
+
+        .solucao-content h3 {
+            font-size: 1.5rem;
+            color: var(--dark-bg);
+            margin-bottom: 1rem;
+        }
+
+        .solucao-content ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .solucao-content ul li {
+            color: var(--gray);
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .solucao-content ul li:hover {
+            color: var(--primary-orange);
+            padding-left: 2rem;
+        }
+
+        .solucao-content ul li:before {
+            content: "▸";
+            color: var(--primary-orange);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        /* Cases Reais */
+        .cases-reais {
+            background: var(--light-bg);
+            padding: 6rem 2rem;
+        }
+
+        .cases-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .cases-grid .case-card:nth-child(4),
+        .cases-grid .case-card:nth-child(5) {
+            grid-column: span 1;
+        }
+
+        /* Última linha centralizada se tiver 5 items */
+        @media (min-width: 969px) {
+            .cases-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .cases-grid .case-card:nth-child(4) {
+                grid-column: 1 / 2;
+            }
+            
+            .cases-grid .case-card:nth-child(5) {
+                grid-column: 2 / 3;
+            }
+        }
+
+        .case-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+            transition: all 0.4s;
+            position: relative;
+        }
+
+        .case-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(255, 153, 0, 0.2);
+        }
+
+        .case-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--primary-orange);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            z-index: 2;
+            box-shadow: 0 3px 10px rgba(255, 153, 0, 0.3);
+        }
+
+        .case-image {
+            width: 100%;
+            height: 240px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .case-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s;
+        }
+
+        .case-card:hover .case-image img {
+            transform: scale(1.1);
+        }
+
+        .case-content {
+            padding: 2rem;
+        }
+
+        .case-content h3 {
+            font-size: 1.4rem;
+            color: var(--dark-bg);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .case-subtitle {
+            font-size: 0.95rem;
+            color: var(--primary-orange);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .case-description {
+            font-size: 0.95rem;
+            color: var(--gray);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .case-results {
+            background: var(--light-bg);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+        }
+
+        .result-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .result-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .result-icon {
+            font-size: 1.3rem;
+        }
+
+        .result-text {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--dark-bg);
+        }
+
+        .case-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background: rgba(255, 153, 0, 0.1);
+            color: var(--primary-orange);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border: 1px solid rgba(255, 153, 0, 0.3);
+        }
+
+        /* OEE Impact Section */
+        .oee-impact {
+            background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+            padding: 6rem 2rem;
+            color: white;
+        }
+
+        .oee-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+            margin-top: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .oee-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            border: 2px solid rgba(255, 153, 0, 0.2);
+            transition: all 0.4s;
+        }
+
+        .oee-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-orange);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 15px 40px rgba(255, 153, 0, 0.3);
+        }
+
+        .oee-header h3 {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            color: white;
+            font-weight: 700;
+        }
+
+        .oee-comparison {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            margin-bottom: 2rem;
+        }
+
+        .oee-before,
+        .oee-after {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .oee-label {
+            font-size: 0.85rem;
+            color: #999;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .oee-number {
+            font-size: 3rem;
+            font-weight: 800;
+            display: block;
+        }
+
+        .oee-before .oee-number {
+            color: #EF4444;
+        }
+
+        .oee-after .oee-number {
+            color: #10B981;
+        }
+
+        .oee-arrow {
+            font-size: 2.5rem;
+            color: var(--primary-orange);
+            font-weight: bold;
+        }
+
+        .oee-gain {
+            background: rgba(255, 153, 0, 0.15);
+            padding: 1rem;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+            border: 1px solid rgba(255, 153, 0, 0.3);
+        }
+
+        .gain-icon {
+            font-size: 1.5rem;
+        }
+
+        .gain-text {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--primary-orange);
+        }
+
+        .oee-cta {
+            text-align: center;
+            background: rgba(255, 153, 0, 0.1);
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            border: 2px solid var(--primary-orange);
+        }
+
+        .oee-cta h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .oee-cta p {
+            font-size: 1.2rem;
+            color: #CCC;
+            margin-bottom: 2rem;
+        }
+
+        .btn-oee-cta {
+            display: inline-block;
+            background: var(--primary-orange);
+            color: white;
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.15rem;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(255, 153, 0, 0.4);
+        }
+
+        .btn-oee-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 153, 0, 0.5);
+        }
+
+        /* Prova Social */
+        .prova-social {
+            background: var(--dark-bg);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .prova-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 3rem auto 0;
+        }
+
+        .prova-item {
+            text-align: center;
+        }
+
+        .prova-numero {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--primary-orange);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .prova-texto {
+            font-size: 1rem;
+            color: #CCC;
+        }
+
+        /* CTA Final com Urgência */
+        .cta-final {
+            background: linear-gradient(135deg, var(--primary-orange) 0%, #FF6600 100%);
+            padding: 6rem 2rem;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-final::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .cta-final-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-final h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            animation: pulse 2s infinite;
+        }
+
+        .cta-final p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .urgencia-box {
+            background: rgba(0,0,0,0.3);
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            border: 2px dashed rgba(255,255,255,0.5);
+        }
+
+        .urgencia-box p {
+            margin: 0;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .btn-cta-final {
+            background: white;
+            color: var(--primary-orange);
+            padding: 1.5rem 4rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.3rem;
+            display: inline-block;
+            transition: all 0.3s;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            animation: pulse 2s infinite;
+        }
+
+        .btn-cta-final:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.4);
+        }
+
+        /* Footer */
+        footer {
+            background: #0D0D0D;
+            color: var(--white);
+            padding: 3rem 2rem 1.5rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-about h3 {
+            color: var(--primary-orange);
+            margin-bottom: 1rem;
+        }
+
+        .footer-about p {
+            color: #CCCCCC;
+            line-height: 1.8;
+        }
+
+        .footer-links h4 {
+            margin-bottom: 1rem;
+            color: var(--primary-orange);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: #CCCCCC;
+            text-decoration: none;
+            transition: color 0.3s;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-orange);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #333;
+            color: #CCCCCC;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero-container,
+            .sobre-content,
+            .paineis-hero {
+                grid-template-columns: 1fr;
+            }
+
+            .paineis-tipos {
+                grid-template-columns: 1fr;
+            }
+
+            .process-steps {
+                flex-direction: column;
+            }
+
+            .step-arrow {
+                transform: rotate(90deg);
+                margin: 1rem 0;
+            }
+
+            .hero-stats {
+                justify-content: space-around;
+            }
+
+            .solucoes-grid,
+            .prova-grid,
+            .cases-grid,
+            .oee-grid,
+            .vf-features,
+            .case-vf-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-image {
+                order: -1;
+            }
+
+            .timeline-line {
+                left: 30px;
+            }
+
+            .timeline-item {
+                flex-direction: row !important;
+            }
+
+            .timeline-content {
+                width: calc(100% - 80px);
+                margin-left: 60px;
+            }
+
+            .timeline-number {
+                left: 30px;
+            }
+
+            .cta-final h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <img src="assets/logo/contrologic_logo_laranja.png" alt="Contrologic Solutions" class="logo-img">
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#quem-somos">Quem Somos</a></li>
+                    <li><a href="#o-que-fazemos">O que Fazemos</a></li>
+                    <li><a href="#paineis">Painéis Elétricos</a></li>
+                    <li><a href="#cases">Cases Reais</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+                <button class="mobile-menu-btn">☰</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">🚀 Indústria 4.0 ao seu alcance</div>
+                <h1>Sua fábrica está <span class="highlight">perdendo dinheiro</span> agora mesmo</h1>
+                <p>Máquinas paradas sem você saber. Produção desperdiçada. Custos invisíveis crescendo. É hora de transformar dados em lucro real.</p>
+                <p class="subtext">Conectamos o chão de fábrica ao ambiente digital em até 30 dias</p>
+                <a href="https://wa.me/5519989863293?text=Olá!+Quero+aumentar+a+produtividade+da+minha+fábrica+com+IoT+e+automação" class="cta-button" target="_blank">Quero Aumentar Minha Produtividade →</a>
+                
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">+30%</span>
+                        <span class="stat-label">Produtividade</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">-40%</span>
+                        <span class="stat-label">Tempo Parado</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Visibilidade</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="assets/hero/fabrica_digitalizada.jpg" alt="Fábrica Digitalizada">
+            </div>
+        </div>
+    </section>
+
+    <!-- Quem Somos -->
+    <section class="sobre" id="quem-somos">
+        <div class="container">
+            <h2 class="section-title">Quem <span class="highlight">Somos</span></h2>
+            <div class="sobre-simples">
+                <p class="destaque">Especialistas em transformação digital industrial.</p>
+                <p>A <strong>Contrologic Solutions</strong> desenvolve soluções integradas em automação, IoT e tecnologia industrial. Atuamos desde a modernização de painéis elétricos até sistemas inteligentes de monitoramento em tempo real.</p>
+                <p><strong>Nosso propósito:</strong> Conectar máquinas, dados e pessoas para transformar processos produtivos em operações inteligentes.</p>
+                
+                <div class="contato-rapido">
+                    <h4>📞 Fale Conosco:</h4>
+                    <a href="https://wa.me/5519989863293?text=Olá!+Vim+pelo+site+e+gostaria+de+saber+mais+sobre+as+soluções+da+Contrologic" class="btn-whatsapp-small" target="_blank">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                        </svg>
+                        WhatsApp: (19) 98986-3293
+                    </a>
+                    <p class="local">📍 São João da Boa Vista - SP</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- O que Fazemos -->
+    <section class="solucoes" id="o-que-fazemos">
+        <div class="container">
+            <h2 class="section-title">O que <span class="highlight">Fazemos</span></h2>
+            <p class="section-subtitle">Soluções completas de automação e IoT para sua indústria</p>
+            
+            <div class="solucoes-grid">
+                <div class="solucao-card animate-on-scroll">
+                    <img src="assets/servicos/khomp_iot.jpg" alt="IoT Industrial">
+                    <div class="solucao-content">
+                        <h3>🏭 IoT e Monitoramento Industrial</h3>
+                        <ul>
+                            <li>Monitoramento em tempo real (OEE e downtime)</li>
+                            <li>Sensores de vibração, temperatura e umidade</li>
+                            <li>Conectividade LoRaWAN, Zigbee e MQTT</li>
+                            <li>Dispositivos Khomp certificados</li>
+                            <li>Dashboards em nuvem 24/7</li>
+                            <li>Alertas via WhatsApp e e-mail</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="solucao-card animate-on-scroll">
+                    <img src="assets/servicos/painel_eletrico.jpg" alt="Painéis Elétricos">
+                    <div class="solucao-content">
+                        <h3>⚡ Painéis Elétricos e Quadros</h3>
+                        <ul>
+                            <li>Projeto e montagem de painéis completos</li>
+                            <li>Quadros de força e distribuição</li>
+                            <li>Painéis com CLPs, IHMs e inversores</li>
+                            <li>Retrofit de painéis antigos</li>
+                            <li>Documentação técnica (unifilares)</li>
+                            <li>Comissionamento e testes</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="solucao-card animate-on-scroll">
+                    <img src="assets/servicos/clp_programacao.jpg" alt="Automação">
+                    <div class="solucao-content">
+                        <h3>🤖 Automação e Programação</h3>
+                        <ul>
+                            <li>Programação de CLPs</li>
+                            <li>Desenvolvimento de IHMs intuitivas</li>
+                            <li>Controle de motores e bombas</li>
+                            <li>Sistemas de inspeção automática</li>
+                            <li>Integração com sistemas existentes</li>
+                            <li>Suporte técnico especializado</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Painéis Elétricos Destaque -->
+    <section class="paineis-destaque" id="paineis">
+        <div class="container">
+            <div class="paineis-hero">
+                <div class="paineis-content">
+                    <span class="paineis-badge">⚡ Nossa Especialidade</span>
+                    <h2>Painéis Elétricos <span class="highlight">Sob Medida</span></h2>
+                    <p class="paineis-desc">Projetamos e montamos painéis elétricos industriais completos, desde quadros de força até automação avançada com CLP, IHM e integração IoT.</p>
+                    
+                    <div class="paineis-tipos">
+                        <div class="tipo-painel">
+                            <div class="tipo-icon">🔌</div>
+                            <h4>Quadros de Força</h4>
+                            <p>Distribuição e proteção elétrica industrial</p>
+                        </div>
+                        <div class="tipo-painel">
+                            <div class="tipo-icon">🤖</div>
+                            <h4>Painéis de Automação</h4>
+                            <p>CLP, IHM, inversores e remotas</p>
+                        </div>
+                        <div class="tipo-painel">
+                            <div class="tipo-icon">🔄</div>
+                            <h4>Retrofit Industrial</h4>
+                            <p>Modernização de painéis antigos</p>
+                        </div>
+                        <div class="tipo-painel">
+                            <div class="tipo-icon">📡</div>
+                            <h4>Painéis IoT</h4>
+                            <p>Integração com sensores e conectividade</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="paineis-specs">
+                    <h3>🔧 O que entregamos:</h3>
+                    <ul class="specs-lista">
+                        <li>
+                            <span class="spec-icon">✓</span>
+                            <div>
+                                <strong>Projeto Completo</strong>
+                                <p>Dimensionamento, layout e documentação técnica (diagramas unifilares e multifilares)</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="spec-icon">✓</span>
+                            <div>
+                                <strong>Montagem Profissional</strong>
+                                <p>Componentes de qualidade (Schneider, WEG, Siemens), cabeamento organizado e identificado</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="spec-icon">✓</span>
+                            <div>
+                                <strong>Programação de CLP</strong>
+                                <p>Lógica de automação, IHM intuitiva e integração com sistemas existentes</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="spec-icon">✓</span>
+                            <div>
+                                <strong>Testes e Comissionamento</strong>
+                                <p>Validação completa, testes de segurança e treinamento da equipe</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="spec-icon">✓</span>
+                            <div>
+                                <strong>Integração IoT</strong>
+                                <p>Sensores Khomp (LoRaWAN, Zigbee), conectividade MQTT e dashboards em tempo real</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="spec-icon">✓</span>
+                            <div>
+                                <strong>Documentação e Suporte</strong>
+                                <p>Manuais técnicos, diagramas atualizados e suporte pós-entrega</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="paineis-process">
+                <h3>📋 Nosso Processo de Trabalho</h3>
+                <div class="process-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h4>Levantamento</h4>
+                        <p>Análise técnica das necessidades e visita ao local</p>
+                    </div>
+                    <div class="step-arrow">→</div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h4>Projeto</h4>
+                        <p>Desenvolvimento do projeto elétrico e aprovação</p>
+                    </div>
+                    <div class="step-arrow">→</div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h4>Montagem</h4>
+                        <p>Fabricação do painel com componentes de qualidade</p>
+                    </div>
+                    <div class="step-arrow">→</div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <h4>Instalação</h4>
+                        <p>Comissionamento, testes e treinamento</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="paineis-cta">
+                <h3>💡 Precisa de um painel elétrico ou retrofit?</h3>
+                <p>Entre em contato para uma consulta técnica gratuita</p>
+                <a href="https://wa.me/5519989863293?text=Olá!+Preciso+de+um+orçamento+para+painel+elétrico" class="btn-paineis">Solicitar Orçamento →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problema-Solução -->
+    <section class="problema-solucao" id="problema">
+        <div class="container">
+            <div class="problema-box animate-on-scroll">
+                <h2>Você reconhece estes problemas na sua fábrica?</h2>
+                <ul class="problema-lista">
+                    <li>Máquinas param e você só descobre horas depois</li>
+                    <li>Não sabe o real desempenho de cada equipamento (OEE?)</li>
+                    <li>Registros manuais em papel causam retrabalho e erros</li>
+                    <li>Manutenções sempre no "modo bombeiro"</li>
+                    <li>Produção travada por falta de dados em tempo real</li>
+                    <li>Perda de competitividade frente à concorrência digital</li>
+                </ul>
+            </div>
+
+            <div class="solucao-box animate-on-scroll">
+                <h2>Imagine sua fábrica operando assim:</h2>
+                <ul class="solucao-lista">
+                    <li>Alertas instantâneos de paradas no seu celular</li>
+                    <li>Dashboard completo com OEE, disponibilidade e performance</li>
+                    <li>Formulários digitais salvos automaticamente na nuvem</li>
+                    <li>Manutenção preditiva que previne problemas antes de acontecer</li>
+                    <li>Decisões rápidas baseadas em dados reais</li>
+                    <li>Operação 100% conectada e otimizada</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline do Processo -->
+    <section class="timeline" id="timeline">
+        <div class="container">
+            <h2 class="section-title">Como transformamos <span class="highlight">sua operação</span></h2>
+            <p class="section-subtitle">Um processo simples e eficaz em 4 etapas</p>
+
+            <div class="timeline-container">
+                <div class="timeline-line"></div>
+                
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-content">
+                        <h3>1. Diagnóstico Gratuito</h3>
+                        <p>Visitamos sua fábrica, entendemos seus desafios e identificamos oportunidades de melhoria imediata. Sem compromisso.</p>
+                    </div>
+                    <div class="timeline-number">1</div>
+                    <div style="width: 45%"></div>
+                </div>
+
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-content">
+                        <h3>2. Projeto Personalizado</h3>
+                        <p>Desenvolvemos uma solução sob medida para sua realidade: sensores, painéis, automação e integração IoT.</p>
+                    </div>
+                    <div class="timeline-number">2</div>
+                    <div style="width: 45%"></div>
+                </div>
+
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-content">
+                        <h3>3. Implementação Rápida</h3>
+                        <p>Instalamos, configuramos e testamos tudo. Sua equipe recebe treinamento completo. Em média 15-30 dias.</p>
+                    </div>
+                    <div class="timeline-number">3</div>
+                    <div style="width: 45%"></div>
+                </div>
+
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-content">
+                        <h3>4. Suporte Contínuo</h3>
+                        <p>Acompanhamento técnico, ajustes e melhorias contínuas. Você nunca fica sozinho nessa jornada.</p>
+                    </div>
+                    <div class="timeline-number">4</div>
+                    <div style="width: 45%"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Soluções -->
+    <section class="solucoes" id="solucoes">
+        <div class="container">
+            <h2 class="section-title">Nossas <span class="highlight">Soluções</span></h2>
+            <p class="section-subtitle">Tecnologia que resolve problemas reais do chão de fábrica</p>
+            
+            <div class="solucoes-grid">
+                <div class="solucao-card animate-on-scroll">
+                    <img src="assets/servicos/khomp_iot.jpg" alt="IoT Industrial">
+                    <div class="solucao-content">
+                        <h3>🏭 Plantas Industriais</h3>
+                        <ul>
+                            <li>Monitoramento em tempo real (OEE)</li>
+                            <li>Sensores de vibração e temperatura</li>
+                            <li>Digitalização de formulários</li>
+                            <li>Dashboards de gestão</li>
+                            <li>Tablets no chão de fábrica</li>
+                            <li>Consultoria em transformação digital</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="solucao-card animate-on-scroll">
+                    <img src="assets/servicos/painel_eletrico.jpg" alt="Painéis Elétricos">
+                    <div class="solucao-content">
+                        <h3>⚡ Quadros Elétricos</h3>
+                        <ul>
+                            <li>Projeto e montagem profissional</li>
+                            <li>Quadros de força e distribuição</li>
+                            <li>CLPs, IHMs e remotas</li>
+                            <li>Retrofit de painéis antigos</li>
+                            <li>Painéis customizados</li>
+                            <li>Comissionamento completo</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="solucao-card animate-on-scroll">
+                    <img src="assets/servicos/clp_programacao.jpg" alt="Automação">
+                    <div class="solucao-content">
+                        <h3>🤖 Automação Industrial</h3>
+                        <ul>
+                            <li>Programação de CLPs</li>
+                            <li>Controle de motores e bombas</li>
+                            <li>Sistemas de inspeção</li>
+                            <li>Monitoramento remoto</li>
+                            <li>Projetos mecatrônicos</li>
+                            <li>Suporte técnico 24/7</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cases Reais -->
+    <section class="cases-reais" id="cases">
+        <div class="container">
+            <h2 class="section-title">📈 Casos Reais de <span class="highlight">Transformação Digital</span></h2>
+            <p class="section-subtitle">Conheça como nossas soluções em IoT e automação estão gerando resultados reais em diferentes tipos de indústrias — da cerâmica à metalúrgica.</p>
+            
+            <div class="cases-grid">
+                <!-- Case 1: Painéis Elétricos e Retrofit -->
+                <div class="case-card animate-on-scroll">
+                    <div class="case-badge">Automação</div>
+                    <div class="case-image">
+                        <img src="assets/cases/painel-eletrico.jpg" alt="Painéis Elétricos Industriais">
+                    </div>
+                    <div class="case-content">
+                        <h3>Painéis Elétricos e Retrofit Industrial</h3>
+                        <p class="case-subtitle">Modernização e automação de quadros elétricos</p>
+                        <p class="case-description">Projeto completo de painéis elétricos industriais com <strong>CLP, IHM e inversores</strong>. Retrofit de máquinas antigas com digitalização de processos, incluindo programação ladder e integração com sistemas supervisórios.</p>
+                        
+                        <div class="case-results">
+                            <div class="result-item">
+                                <span class="result-icon">⚡</span>
+                                <span class="result-text">Quadros personalizados de força e automação</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-icon">🔄</span>
+                                <span class="result-text">Retrofit com ganhos em eficiência</span>
+                            </div>
+                        </div>
+                        
+                        <div class="case-tags">
+                            <span class="tag">CLP</span>
+                            <span class="tag">IHM</span>
+                            <span class="tag">Retrofit</span>
+                        </div>
+                        <a href="https://wa.me/5519989863293?text=Olá!+Quero+saber+mais+sobre+painéis+elétricos+e+retrofit" class="case-whatsapp" target="_blank">
+                            💬 Falar sobre Painéis Elétricos
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Case 2: Monitoramento de Temperatura -->
+                <div class="case-card animate-on-scroll">
+                    <div class="case-badge">LoRa</div>
+                    <div class="case-image">
+                        <img src="assets/cases/sensor-temperatura.jpg" alt="Sensor DTL-300 - Temperatura">
+                    </div>
+                    <div class="case-content">
+                        <h3>Monitoramento de Temperatura em Câmara Fria</h3>
+                        <p class="case-subtitle">Controle preciso de ambientes refrigerados</p>
+                        <p class="case-description">Implementação do <strong>DTL-300</strong> para monitoramento contínuo de temperatura em câmaras frias. A sonda conectada ao dispositivo envia dados via LoRa, garantindo alertas instantâneos e prevenção de perdas por variação térmica.</p>
+                        
+                        <div class="case-results">
+                            <div class="result-item">
+                                <span class="result-icon">❄️</span>
+                                <span class="result-text">Monitoramento 24/7 automático</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-icon">📱</span>
+                                <span class="result-text">Alertas via app em tempo real</span>
+                            </div>
+                        </div>
+                        
+                        <div class="case-tags">
+                            <span class="tag">LoRa</span>
+                            <span class="tag">DTL-300</span>
+                            <span class="tag">Cold Chain</span>
+                        </div>
+                        <a href="https://wa.me/5519989863293?text=Olá!+Quero+saber+mais+sobre+monitoramento+de+temperatura" class="case-whatsapp" target="_blank">
+                            💬 Falar sobre Monitoramento
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Case 3: Medição de Energia -->
+                <div class="case-card animate-on-scroll">
+                    <div class="case-badge">Zigbee</div>
+                    <div class="case-image">
+                        <img src="assets/cases/sensor-energia.jpg" alt="Sensor ITE 10ZI - Energia">
+                    </div>
+                    <div class="case-content">
+                        <h3>Medição de Energia Trifásica Inteligente</h3>
+                        <p class="case-subtitle">Monitoramento de consumo e qualidade elétrica</p>
+                        <p class="case-description">Utilização do <strong>ITE 10ZI</strong> para leitura de até 3 fases de energia, com envio via Zigbee ao gateway ITG200. Permitiu identificar desequilíbrios elétricos, quedas de tensão e desperdícios em tempo real.</p>
+                        
+                        <div class="case-results">
+                            <div class="result-item">
+                                <span class="result-icon">💡</span>
+                                <span class="result-text">-12% consumo mensal</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-icon">🔔</span>
+                                <span class="result-text">Alertas automáticos de sobrecarga</span>
+                            </div>
+                        </div>
+                        
+                        <div class="case-tags">
+                            <span class="tag">Zigbee</span>
+                            <span class="tag">Gateway ITG200</span>
+                            <span class="tag">Energia Inteligente</span>
+                        </div>
+                        <a href="https://wa.me/5519989863293?text=Olá!+Quero+saber+mais+sobre+monitoramento+de+energia" class="case-whatsapp" target="_blank">
+                            💬 Falar sobre Energia
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Case 4: Telemetria de Nível -->
+                <div class="case-card animate-on-scroll">
+                    <div class="case-badge">LoRa/Zigbee</div>
+                    <div class="case-image">
+                        <img src="assets/cases/sensor-nivel.jpg" alt="Sensores de Nível IoT">
+                    </div>
+                    <div class="case-content">
+                        <h3>Telemetria e Monitoramento de Nível de Água</h3>
+                        <p class="case-subtitle">Gestão automática de reservatórios e processos</p>
+                        <p class="case-description">Implementação de sensores de bóia conectados via LoRa/Zigbee para monitorar cisternas e tanques industriais. O sistema envia alertas via MQTT quando os níveis atingem limites críticos.</p>
+                        
+                        <div class="case-results">
+                            <div class="result-item">
+                                <span class="result-icon">✅</span>
+                                <span class="result-text">Zero falhas por falta d'água</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-icon">⏱️</span>
+                                <span class="result-text">-20% tempo de inspeção</span>
+                            </div>
+                        </div>
+                        
+                        <div class="case-tags">
+                            <span class="tag">LoRa</span>
+                            <span class="tag">Zigbee</span>
+                            <span class="tag">Telemetria</span>
+                        </div>
+                        <a href="https://wa.me/5519989863293?text=Olá!+Quero+saber+mais+sobre+monitoramento+de+nível" class="case-whatsapp" target="_blank">
+                            💬 Falar sobre Telemetria
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Case 5: Monitoramento de Vibração -->
+                <div class="case-card animate-on-scroll">
+                    <div class="case-badge">LoRaWAN</div>
+                    <div class="case-image">
+                        <img src="assets/cases/sensor-vibracao.jpg" alt="Sensor NIT 21LV - Vibração">
+                    </div>
+                    <div class="case-content">
+                        <h3>Monitoramento de Vibração com LoRaWAN</h3>
+                        <p class="case-subtitle">Detecção preditiva de falhas em motores</p>
+                        <p class="case-description">Instalação do sensor <strong>NIT 21LV</strong> para medição de vibração e temperatura em motores industriais. Os dados são enviados via LoRaWAN para a nuvem, permitindo manutenção preditiva.</p>
+                        
+                        <div class="case-results">
+                            <div class="result-item">
+                                <span class="result-icon">📈</span>
+                                <span class="result-text">+18% disponibilidade</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-icon">⬇️</span>
+                                <span class="result-text">-35% paradas não programadas</span>
+                            </div>
+                        </div>
+                        
+                        <div class="case-tags">
+                            <span class="tag">LoRaWAN</span>
+                            <span class="tag">MQTT</span>
+                            <span class="tag">Manutenção Preditiva</span>
+                        </div>
+                        <a href="https://wa.me/5519989863293?text=Olá!+Quero+saber+mais+sobre+monitoramento+de+vibração" class="case-whatsapp" target="_blank">
+                            💬 Falar sobre Manutenção Preditiva
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Case 6: Agricultura Inteligente -->
+                <div class="case-card animate-on-scroll">
+                    <div class="case-badge">LoRaWAN</div>
+                    <div class="case-image">
+                        <img src="assets/cases/agricultura-cafe.jpg" alt="Monitoramento de Silos - Café">
+                    </div>
+                    <div class="case-content">
+                        <h3>Agricultura Inteligente: Silos de Café</h3>
+                        <p class="case-subtitle">Secado preciso de cafés especiais - SP</p>
+                        <p class="case-description">Fazenda com 8 silos de 300.000L automatizou o controle usando <strong>Gateway ITG 201</strong>, <strong>NIT21LI</strong> e <strong>sensores THW 100</strong>. Medições a cada hora em 3 alturas por silo.</p>
+                        
+                        <div class="case-results">
+                            <div class="result-item">
+                                <span class="result-icon">⏱️</span>
+                                <span class="result-text">-90% tempo de medições manuais</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-icon">📊</span>
+                                <span class="result-text">Trazabilidade digital completa</span>
+                            </div>
+                        </div>
+                        
+                        <div class="case-tags">
+                            <span class="tag">LoRaWAN</span>
+                            <span class="tag">ITG 201</span>
+                            <span class="tag">Agro 4.0</span>
+                        </div>
+                        <a href="https://wa.me/5519989863293?text=Olá!+Quero+saber+mais+sobre+IoT+para+agricultura" class="case-whatsapp" target="_blank">
+                            💬 Falar sobre Agro IoT
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cases-cta">
+                <h3>💡 Sua operação também pode ter esses resultados</h3>
+                <p>Entre em contato e descubra qual solução IoT é ideal para o seu negócio</p>
+                <a href="https://wa.me/5519989863293?text=Olá!+Quero+conhecer+as+soluções+IoT+da+Contrologic+Solutions" class="btn-cases-cta" target="_blank">Falar com Especialista no WhatsApp →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- OEE Impact Section -->
+    <section class="oee-impact">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">📊 Impacto Real em <span class="highlight">Eficiência Operacional (OEE)</span></h2>
+            <p class="section-subtitle" style="color: #CCC;">A combinação de sensores, automação e conectividade industrial resultou em ganhos reais de OEE em nossos projetos de digitalização.</p>
+            
+            <div class="oee-grid">
+                <!-- OEE Case 1 -->
+                <div class="oee-card animate-on-scroll">
+                    <div class="oee-header">
+                        <h3>Fábrica de Louças Sanitárias - SP</h3>
+                    </div>
+                    <div class="oee-comparison">
+                        <div class="oee-before">
+                            <span class="oee-label">ANTES</span>
+                            <span class="oee-number">57%</span>
+                        </div>
+                        <div class="oee-arrow">→</div>
+                        <div class="oee-after">
+                            <span class="oee-label">DEPOIS</span>
+                            <span class="oee-number">78%</span>
+                        </div>
+                    </div>
+                    <div class="oee-gain">
+                        <span class="gain-icon">🚀</span>
+                        <span class="gain-text">+21% de eficiência geral</span>
+                    </div>
+                </div>
+
+                <!-- OEE Case 2 -->
+                <div class="oee-card animate-on-scroll">
+                    <div class="oee-header">
+                        <h3>Metalúrgica Automotiva - MG</h3>
+                    </div>
+                    <div class="oee-comparison">
+                        <div class="oee-before">
+                            <span class="oee-label">ANTES</span>
+                            <span class="oee-number">62%</span>
+                        </div>
+                        <div class="oee-arrow">→</div>
+                        <div class="oee-after">
+                            <span class="oee-label">DEPOIS</span>
+                            <span class="oee-number">85%</span>
+                        </div>
+                    </div>
+                    <div class="oee-gain">
+                        <span class="gain-icon">📈</span>
+                        <span class="gain-text">+23% de produtividade</span>
+                    </div>
+                </div>
+
+                <!-- OEE Case 3 -->
+                <div class="oee-card animate-on-scroll">
+                    <div class="oee-header">
+                        <h3>Fábrica de Plásticos - PR</h3>
+                    </div>
+                    <div class="oee-comparison">
+                        <div class="oee-before">
+                            <span class="oee-label">ANTES</span>
+                            <span class="oee-number">59%</span>
+                        </div>
+                        <div class="oee-arrow">→</div>
+                        <div class="oee-after">
+                            <span class="oee-label">DEPOIS</span>
+                            <span class="oee-number">80%</span>
+                        </div>
+                    </div>
+                    <div class="oee-gain">
+                        <span class="gain-icon">⚡</span>
+                        <span class="gain-text">+21% disponibilidade e performance</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="oee-cta">
+                <h3>🚀 Sua fábrica também pode alcançar esses resultados</h3>
+                <p>Agende seu diagnóstico gratuito e descubra como aplicar IoT para aumentar seu OEE.</p>
+                <a href="#contato" class="btn-oee-cta">Quero Melhorar Meu OEE →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prova Social -->
+    <section class="prova-social" id="prova">
+        <h2 class="section-title" style="color: white;">Resultados que <span class="highlight">comprovamos</span></h2>
+        <p class="section-subtitle" style="color: #CCC;">Impacto real nas operações dos nossos clientes</p>
+        
+        <div class="prova-grid">
+            <div class="prova-item animate-on-scroll">
+                <span class="prova-numero">+35%</span>
+                <span class="prova-texto">Aumento médio de produtividade</span>
+            </div>
+            <div class="prova-item animate-on-scroll">
+                <span class="prova-numero">-45%</span>
+                <span class="prova-texto">Redução de tempo parado</span>
+            </div>
+            <div class="prova-item animate-on-scroll">
+                <span class="prova-numero">50+</span>
+                <span class="prova-texto">Projetos entregues</span>
+            </div>
+            <div class="prova-item animate-on-scroll">
+                <span class="prova-numero">100%</span>
+                <span class="prova-texto">Clientes satisfeitos</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Final com Urgência -->
+    <section class="cta-final" id="contato">
+        <div class="cta-final-content">
+            <h2>⏰ Cada dia sem automação é dinheiro perdido</h2>
+            <p>Enquanto você lê isso, suas máquinas podem estar paradas sem você saber. É hora de mudar.</p>
+            
+            <div class="urgencia-box">
+                <p>🎁 Diagnóstico Gratuito + Proposta Personalizada sem compromisso</p>
+            </div>
+
+            <a href="https://wa.me/5519989863293?text=Olá!+Quero+fazer+o+diagnóstico+gratuito+e+transformar+minha+fábrica+com+IoT+e+automação!" class="btn-cta-final">
+                Agendar Diagnóstico Gratuito →
+            </a>
+
+            <p style="margin-top: 2rem; font-size: 1rem;">📍 São João da Boa Vista - SP | 📧 contrologicsolutions@gmail.com</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-about">
+                <h3>Contrologic Solutions</h3>
+                <p>Transformamos fábricas tradicionais em operações inteligentes e conectadas através de IoT, automação e tecnologia industrial aplicada.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Links Rápidos</h4>
+                <ul>
+                    <li><a href="#problema">O Problema</a></li>
+                    <li><a href="#solucoes">Soluções</a></li>
+                    <li><a href="#timeline">Processo</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Redes Sociais</h4>
+                <ul>
+                    <li><a href="https://www.instagram.com/contrologic.solutions/" target="_blank">Instagram</a></li>
+                    <li><a href="https://www.linkedin.com/company/contrologic-solutions/" target="_blank">LinkedIn</a></li>
+                    <li><a href="https://wa.me/5519989863293" target="_blank">WhatsApp</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Contrologic Solutions — Tecnologia aplicada à transformação industrial.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header shadow on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.5)';
+            } else {
+                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.3)';
+            }
+        });
+
+        // Animate on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
