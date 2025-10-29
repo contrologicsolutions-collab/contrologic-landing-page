@@ -31,6 +31,61 @@
         }
 
         /* Animações */
+        /* WhatsApp Flutuante */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 65px;
+            height: 65px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.4);
+            z-index: 9999;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 40px rgba(37, 211, 102, 0.6);
+        }
+
+        .whatsapp-float svg {
+            width: 38px;
+            height: 38px;
+        }
+
+        .whatsapp-pulse {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: #25D366;
+            opacity: 0;
+            animation: pulse-whatsapp 2s infinite;
+            pointer-events: none;
+        }
+
+        @keyframes pulse-whatsapp {
+            0% {
+                transform: scale(1);
+                opacity: 0.7;
+            }
+            50% {
+                transform: scale(1.3);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 0;
+            }
+        }
+
+        /* Animações de Scroll */
         @keyframes float {
             0%, 100% { transform: translateY(0px); }
             50% { transform: translateY(-20px); }
@@ -167,8 +222,8 @@
 
         /* Hero Section com Storytelling */
         .hero {
-            background: linear-gradient(135deg, #1A1A1A 0%, #2D2D2D 100%);
-            min-height: 100vh;
+            background: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #334155 100%);
+            min-height: 90vh;
             display: flex;
             align-items: center;
             padding: 120px 2rem 4rem;
@@ -176,139 +231,102 @@
             overflow: hidden;
         }
 
-        .hero::before {
-            content: '';
+        .hero-overlay {
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: radial-gradient(circle at 30% 50%, rgba(255, 153, 0, 0.1) 0%, transparent 50%);
+            background: radial-gradient(circle at 30% 50%, rgba(255, 153, 0, 0.15) 0%, transparent 50%);
             pointer-events: none;
         }
 
         .hero-container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            gap: 6rem;
             align-items: center;
             position: relative;
             z-index: 1;
         }
 
-        .hero-content {
-            animation: fadeInLeft 1s ease-out;
-        }
-
-        .hero-badge {
-            display: inline-block;
-            background: rgba(255, 153, 0, 0.2);
-            color: var(--primary-orange);
-            padding: 0.5rem 1.5rem;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            border: 1px solid var(--primary-orange);
-            animation: pulse 2s infinite;
-        }
-
         .hero-content h1 {
-            font-size: 3.2rem;
+            font-size: 3.5rem;
             font-weight: 800;
-            color: var(--white);
+            color: white;
             margin-bottom: 1.5rem;
-            line-height: 1.1;
+            line-height: 1.2;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
 
         .hero-content h1 .highlight {
             color: var(--primary-orange);
-            position: relative;
-            display: inline-block;
+            text-shadow: 0 2px 15px rgba(255, 153, 0, 0.5);
         }
 
-        .hero-content h1 .highlight::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 100%;
-            height: 3px;
+        .hero-tagline {
+            font-size: 1.5rem;
+            color: var(--primary-orange);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-description {
+            font-size: 1.15rem;
+            color: #E2E8F0;
+            line-height: 1.8;
+            margin-bottom: 3rem;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
             background: var(--primary-orange);
-            animation: shine 3s infinite;
-        }
-
-        .hero-content p {
-            font-size: 1.25rem;
-            color: #CCCCCC;
-            margin-bottom: 2rem;
-            line-height: 1.7;
-        }
-
-        .hero-content .subtext {
-            font-size: 1rem;
-            color: #999;
-            margin-bottom: 2.5rem;
-            font-style: italic;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--primary-orange) 0%, #FF8800 100%);
-            color: var(--white);
-            padding: 1.2rem 3rem;
+            color: white;
+            padding: 1.2rem 2.5rem;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 700;
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             transition: all 0.3s;
             box-shadow: 0 10px 30px rgba(255, 153, 0, 0.4);
-            position: relative;
-            overflow: hidden;
         }
 
-        .cta-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: left 0.5s;
-        }
-
-        .cta-button:hover::before {
-            left: 100%;
-        }
-
-        .cta-button:hover {
+        .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(255, 153, 0, 0.5);
+            box-shadow: 0 15px 40px rgba(255, 153, 0, 0.6);
+            background: #FF8800;
         }
 
-        .hero-stats {
-            display: flex;
-            gap: 2rem;
-            margin-top: 2rem;
+        .btn-secondary {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
         }
 
-        .stat-item {
-            text-align: left;
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--primary-orange);
-            display: block;
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            color: #999;
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: white;
+            transform: translateY(-2px);
         }
 
         .hero-image {
@@ -319,15 +337,30 @@
         .hero-image img {
             width: 100%;
             border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+            border-radius: 20px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.5);
             animation: float 6s ease-in-out infinite;
         }
 
         /* Painéis Elétricos Destaque */
         .paineis-destaque {
-            background: linear-gradient(135deg, #1A1A1A 0%, #2D2D2D 100%);
+            background: linear-gradient(135deg, #F8FAFC 0%, #E2E8F0 100%);
             padding: 5rem 2rem;
-            color: white;
+            color: var(--dark-bg);
         }
 
         .paineis-hero {
@@ -347,17 +380,19 @@
             font-weight: 700;
             font-size: 0.9rem;
             margin-bottom: 1.5rem;
+            box-shadow: 0 4px 15px rgba(255, 153, 0, 0.3);
         }
 
         .paineis-content h2 {
             font-size: 2.8rem;
             margin-bottom: 1.5rem;
             font-weight: 800;
+            color: var(--dark-bg);
         }
 
         .paineis-desc {
             font-size: 1.2rem;
-            color: #CCC;
+            color: #475569;
             margin-bottom: 3rem;
             line-height: 1.7;
         }
@@ -369,17 +404,19 @@
         }
 
         .tipo-painel {
-            background: rgba(255, 255, 255, 0.05);
+            background: white;
             padding: 1.5rem;
             border-radius: 15px;
-            border: 2px solid rgba(255, 153, 0, 0.2);
+            border: 2px solid #E2E8F0;
             transition: all 0.3s;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         }
 
         .tipo-painel:hover {
             border-color: var(--primary-orange);
-            background: rgba(255, 153, 0, 0.1);
+            background: #FFF7ED;
             transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 153, 0, 0.15);
         }
 
         .tipo-icon {
@@ -389,21 +426,22 @@
 
         .tipo-painel h4 {
             font-size: 1.2rem;
-            color: white;
+            color: var(--dark-bg);
             margin-bottom: 0.5rem;
             font-weight: 700;
         }
 
         .tipo-painel p {
             font-size: 0.95rem;
-            color: #CCC;
+            color: #64748B;
         }
 
         .paineis-specs {
-            background: rgba(255, 255, 255, 0.05);
+            background: white;
             padding: 2.5rem;
             border-radius: 20px;
-            border: 2px solid rgba(255, 153, 0, 0.2);
+            border: 2px solid #E2E8F0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
         }
 
         .paineis-specs h3 {
@@ -442,31 +480,32 @@
         }
 
         .specs-lista strong {
-            color: white;
+            color: var(--dark-bg);
             font-size: 1.1rem;
             display: block;
             margin-bottom: 0.3rem;
         }
 
         .specs-lista p {
-            color: #CCC;
+            color: #64748B;
             font-size: 0.95rem;
             line-height: 1.6;
         }
 
         .paineis-process {
-            background: rgba(255, 153, 0, 0.1);
+            background: linear-gradient(135deg, #FFF7ED 0%, #FFEDD5 100%);
             padding: 3rem;
             border-radius: 20px;
             margin-bottom: 3rem;
-            border: 2px solid rgba(255, 153, 0, 0.3);
+            border: 2px solid #FDBA74;
+            box-shadow: 0 4px 20px rgba(255, 153, 0, 0.1);
         }
 
         .paineis-process h3 {
             text-align: center;
             font-size: 2rem;
             margin-bottom: 3rem;
-            color: white;
+            color: var(--dark-bg);
         }
 
         .process-steps {
@@ -499,13 +538,14 @@
 
         .step h4 {
             font-size: 1.2rem;
-            color: white;
+            color: var(--dark-bg);
             margin-bottom: 0.5rem;
+            font-weight: 700;
         }
 
         .step p {
             font-size: 0.9rem;
-            color: #CCC;
+            color: #64748B;
         }
 
         .step-arrow {
@@ -517,21 +557,22 @@
 
         .paineis-cta {
             text-align: center;
-            background: rgba(255, 255, 255, 0.05);
+            background: white;
             padding: 3rem;
             border-radius: 20px;
             border: 2px solid var(--primary-orange);
+            box-shadow: 0 4px 20px rgba(255, 153, 0, 0.15);
         }
 
         .paineis-cta h3 {
             font-size: 2rem;
             margin-bottom: 1rem;
-            color: white;
+            color: var(--dark-bg);
         }
 
         .paineis-cta p {
             font-size: 1.2rem;
-            color: #CCC;
+            color: #64748B;
             margin-bottom: 2rem;
         }
 
@@ -551,6 +592,7 @@
         .btn-paineis:hover {
             transform: translateY(-3px);
             box-shadow: 0 15px 40px rgba(255, 153, 0, 0.5);
+            background: #FF8800;
         }
 
         /* Problema-Solução Section */
@@ -686,6 +728,18 @@
             margin-right: auto;
         }
 
+        /* Melhorar contraste em fundos escuros */
+        .oee-impact .section-title,
+        .cta-final h2 {
+            color: white !important;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .oee-impact .section-subtitle {
+            color: #E2E8F0 !important;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
         /* Timeline de Transformação */
         .timeline {
             background: var(--light-bg);
@@ -760,7 +814,7 @@
 
         /* Sobre */
         .sobre {
-            background: var(--light-bg);
+            background: white;
             padding: 6rem 2rem;
         }
 
@@ -773,30 +827,37 @@
         .sobre-simples .destaque {
             font-size: 1.8rem;
             font-weight: 700;
-            color: var(--dark-bg);
+            color: #1A1A1A;
             margin-bottom: 2rem;
         }
 
         .sobre-simples p {
             font-size: 1.15rem;
             line-height: 1.8;
-            color: var(--gray);
+            color: #4A5568;
             margin-bottom: 1.5rem;
+        }
+
+        .sobre-simples strong {
+            color: #1A1A1A;
+            font-weight: 700;
         }
 
         .contato-rapido {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            background: linear-gradient(135deg, #F8F9FA 0%, #FFFFFF 100%);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
             margin-top: 3rem;
             text-align: center;
+            border: 2px solid #E2E8F0;
         }
 
         .contato-rapido h4 {
-            font-size: 1.3rem;
-            color: var(--dark-bg);
+            font-size: 1.4rem;
+            color: #1A1A1A;
             margin-bottom: 1.5rem;
+            font-weight: 700;
         }
 
         .btn-whatsapp-small {
@@ -805,24 +866,26 @@
             gap: 0.8rem;
             background: #25D366;
             color: white;
-            padding: 1rem 2rem;
+            padding: 1.2rem 2.5rem;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 700;
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             transition: all 0.3s;
-            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.3);
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.4);
         }
 
         .btn-whatsapp-small:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+            box-shadow: 0 12px 35px rgba(37, 211, 102, 0.5);
+            background: #22C55E;
         }
 
         .local {
-            margin-top: 1rem;
-            color: var(--gray);
-            font-size: 1rem;
+            margin-top: 1.5rem;
+            color: #64748B;
+            font-size: 1.05rem;
+            font-weight: 500;
         }
 
         /* Soluções Grid */
@@ -910,26 +973,6 @@
             grid-template-columns: repeat(3, 1fr);
             gap: 2.5rem;
             margin-top: 3rem;
-        }
-
-        .cases-grid .case-card:nth-child(4),
-        .cases-grid .case-card:nth-child(5) {
-            grid-column: span 1;
-        }
-
-        /* Última linha centralizada se tiver 5 items */
-        @media (min-width: 969px) {
-            .cases-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            
-            .cases-grid .case-card:nth-child(4) {
-                grid-column: 1 / 2;
-            }
-            
-            .cases-grid .case-card:nth-child(5) {
-                grid-column: 2 / 3;
-            }
         }
 
         .case-card {
@@ -1364,6 +1407,27 @@
             .sobre-content,
             .paineis-hero {
                 grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-tagline {
+                font-size: 1.2rem;
+            }
+
+            .hero-description {
+                font-size: 1rem;
+            }
+
+            .hero-ctas {
+                flex-direction: column;
+            }
+
+            .hero-image {
+                order: -1;
             }
 
             .paineis-tipos {
@@ -1453,31 +1517,26 @@
 
     <!-- Hero Section -->
     <section class="hero">
+        <div class="hero-overlay"></div>
         <div class="hero-container">
             <div class="hero-content">
-                <div class="hero-badge">🚀 Indústria 4.0 ao seu alcance</div>
-                <h1>Sua fábrica está <span class="highlight">perdendo dinheiro</span> agora mesmo</h1>
-                <p>Máquinas paradas sem você saber. Produção desperdiçada. Custos invisíveis crescendo. É hora de transformar dados em lucro real.</p>
-                <p class="subtext">Conectamos o chão de fábrica ao ambiente digital em até 30 dias</p>
-                <a href="https://wa.me/5519989863293?text=Olá!+Quero+aumentar+a+produtividade+da+minha+fábrica+com+IoT+e+automação" class="cta-button" target="_blank">Quero Aumentar Minha Produtividade →</a>
+                <h1>Soluções em <span class="highlight">Automação Industrial</span></h1>
+                <p class="hero-tagline">Conectamos máquinas, dados e pessoas para transformar sua indústria</p>
+                <p class="hero-description">Desenvolvemos projetos personalizados em IoT, painéis elétricos e automação industrial. Do conceito à implementação, sua fábrica conectada e inteligente.</p>
                 
-                <div class="hero-stats">
-                    <div class="stat-item">
-                        <span class="stat-number">+30%</span>
-                        <span class="stat-label">Produtividade</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">-40%</span>
-                        <span class="stat-label">Tempo Parado</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">100%</span>
-                        <span class="stat-label">Visibilidade</span>
-                    </div>
+                <div class="hero-ctas">
+                    <a href="https://wa.me/5519989863293?text=Olá!+Quero+conhecer+as+soluções+da+Contrologic" class="btn-primary" target="_blank">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                        </svg>
+                        Fale Conosco
+                    </a>
+                    <a href="#o-que-fazemos" class="btn-secondary">Conheça Nossas Soluções</a>
                 </div>
             </div>
+            
             <div class="hero-image">
-                <img src="assets/hero/fabrica_digitalizada.jpg" alt="Fábrica Digitalizada">
+                <img src="assets/hero/fabrica_digitalizada.jpg" alt="Fábrica Digitalizada - Automação Industrial">
             </div>
         </div>
     </section>
@@ -1679,37 +1738,8 @@
         </div>
     </section>
 
-    <!-- Problema-Solução -->
-    <section class="problema-solucao" id="problema">
-        <div class="container">
-            <div class="problema-box animate-on-scroll">
-                <h2>Você reconhece estes problemas na sua fábrica?</h2>
-                <ul class="problema-lista">
-                    <li>Máquinas param e você só descobre horas depois</li>
-                    <li>Não sabe o real desempenho de cada equipamento (OEE?)</li>
-                    <li>Registros manuais em papel causam retrabalho e erros</li>
-                    <li>Manutenções sempre no "modo bombeiro"</li>
-                    <li>Produção travada por falta de dados em tempo real</li>
-                    <li>Perda de competitividade frente à concorrência digital</li>
-                </ul>
-            </div>
-
-            <div class="solucao-box animate-on-scroll">
-                <h2>Imagine sua fábrica operando assim:</h2>
-                <ul class="solucao-lista">
-                    <li>Alertas instantâneos de paradas no seu celular</li>
-                    <li>Dashboard completo com OEE, disponibilidade e performance</li>
-                    <li>Formulários digitais salvos automaticamente na nuvem</li>
-                    <li>Manutenção preditiva que previne problemas antes de acontecer</li>
-                    <li>Decisões rápidas baseadas em dados reais</li>
-                    <li>Operação 100% conectada e otimizada</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
     <!-- Timeline do Processo -->
-    <section class="timeline" id="timeline">
+    <section class="timeline" id="processo">
         <div class="container">
             <h2 class="section-title">Como transformamos <span class="highlight">sua operação</span></h2>
             <p class="section-subtitle">Um processo simples e eficaz em 4 etapas</p>
@@ -1756,61 +1786,6 @@
         </div>
     </section>
 
-    <!-- Soluções -->
-    <section class="solucoes" id="solucoes">
-        <div class="container">
-            <h2 class="section-title">Nossas <span class="highlight">Soluções</span></h2>
-            <p class="section-subtitle">Tecnologia que resolve problemas reais do chão de fábrica</p>
-            
-            <div class="solucoes-grid">
-                <div class="solucao-card animate-on-scroll">
-                    <img src="assets/servicos/khomp_iot.jpg" alt="IoT Industrial">
-                    <div class="solucao-content">
-                        <h3>🏭 Plantas Industriais</h3>
-                        <ul>
-                            <li>Monitoramento em tempo real (OEE)</li>
-                            <li>Sensores de vibração e temperatura</li>
-                            <li>Digitalização de formulários</li>
-                            <li>Dashboards de gestão</li>
-                            <li>Tablets no chão de fábrica</li>
-                            <li>Consultoria em transformação digital</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="solucao-card animate-on-scroll">
-                    <img src="assets/servicos/painel_eletrico.jpg" alt="Painéis Elétricos">
-                    <div class="solucao-content">
-                        <h3>⚡ Quadros Elétricos</h3>
-                        <ul>
-                            <li>Projeto e montagem profissional</li>
-                            <li>Quadros de força e distribuição</li>
-                            <li>CLPs, IHMs e remotas</li>
-                            <li>Retrofit de painéis antigos</li>
-                            <li>Painéis customizados</li>
-                            <li>Comissionamento completo</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="solucao-card animate-on-scroll">
-                    <img src="assets/servicos/clp_programacao.jpg" alt="Automação">
-                    <div class="solucao-content">
-                        <h3>🤖 Automação Industrial</h3>
-                        <ul>
-                            <li>Programação de CLPs</li>
-                            <li>Controle de motores e bombas</li>
-                            <li>Sistemas de inspeção</li>
-                            <li>Monitoramento remoto</li>
-                            <li>Projetos mecatrônicos</li>
-                            <li>Suporte técnico 24/7</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Cases Reais -->
     <section class="cases-reais" id="cases">
         <div class="container">
@@ -1851,82 +1826,16 @@
                     </div>
                 </div>
 
-                <!-- Case 2: Monitoramento de Temperatura -->
-                <div class="case-card animate-on-scroll">
-                    <div class="case-badge">LoRa</div>
-                    <div class="case-image">
-                        <img src="assets/cases/sensor-temperatura.jpg" alt="Sensor DTL-300 - Temperatura">
-                    </div>
-                    <div class="case-content">
-                        <h3>Monitoramento de Temperatura em Câmara Fria</h3>
-                        <p class="case-subtitle">Controle preciso de ambientes refrigerados</p>
-                        <p class="case-description">Implementação do <strong>DTL-300</strong> para monitoramento contínuo de temperatura em câmaras frias. A sonda conectada ao dispositivo envia dados via LoRa, garantindo alertas instantâneos e prevenção de perdas por variação térmica.</p>
-                        
-                        <div class="case-results">
-                            <div class="result-item">
-                                <span class="result-icon">❄️</span>
-                                <span class="result-text">Monitoramento 24/7 automático</span>
-                            </div>
-                            <div class="result-item">
-                                <span class="result-icon">📱</span>
-                                <span class="result-text">Alertas via app em tempo real</span>
-                            </div>
-                        </div>
-                        
-                        <div class="case-tags">
-                            <span class="tag">LoRa</span>
-                            <span class="tag">DTL-300</span>
-                            <span class="tag">Cold Chain</span>
-                        </div>
-                        <a href="https://wa.me/5519989863293?text=Olá!+Quero+saber+mais+sobre+monitoramento+de+temperatura" class="case-whatsapp" target="_blank">
-                            💬 Falar sobre Monitoramento
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Case 3: Medição de Energia -->
-                <div class="case-card animate-on-scroll">
-                    <div class="case-badge">Zigbee</div>
-                    <div class="case-image">
-                        <img src="assets/cases/sensor-energia.jpg" alt="Sensor ITE 10ZI - Energia">
-                    </div>
-                    <div class="case-content">
-                        <h3>Medição de Energia Trifásica Inteligente</h3>
-                        <p class="case-subtitle">Monitoramento de consumo e qualidade elétrica</p>
-                        <p class="case-description">Utilização do <strong>ITE 10ZI</strong> para leitura de até 3 fases de energia, com envio via Zigbee ao gateway ITG200. Permitiu identificar desequilíbrios elétricos, quedas de tensão e desperdícios em tempo real.</p>
-                        
-                        <div class="case-results">
-                            <div class="result-item">
-                                <span class="result-icon">💡</span>
-                                <span class="result-text">-12% consumo mensal</span>
-                            </div>
-                            <div class="result-item">
-                                <span class="result-icon">🔔</span>
-                                <span class="result-text">Alertas automáticos de sobrecarga</span>
-                            </div>
-                        </div>
-                        
-                        <div class="case-tags">
-                            <span class="tag">Zigbee</span>
-                            <span class="tag">Gateway ITG200</span>
-                            <span class="tag">Energia Inteligente</span>
-                        </div>
-                        <a href="https://wa.me/5519989863293?text=Olá!+Quero+saber+mais+sobre+monitoramento+de+energia" class="case-whatsapp" target="_blank">
-                            💬 Falar sobre Energia
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Case 4: Telemetria de Nível -->
+                <!-- Case 2: Telemetria de Nível -->
                 <div class="case-card animate-on-scroll">
                     <div class="case-badge">LoRa/Zigbee</div>
                     <div class="case-image">
                         <img src="assets/cases/sensor-nivel.jpg" alt="Sensores de Nível IoT">
                     </div>
                     <div class="case-content">
-                        <h3>Telemetria e Monitoramento de Nível de Água</h3>
-                        <p class="case-subtitle">Gestão automática de reservatórios e processos</p>
-                        <p class="case-description">Implementação de sensores de bóia conectados via LoRa/Zigbee para monitorar cisternas e tanques industriais. O sistema envia alertas via MQTT quando os níveis atingem limites críticos.</p>
+                        <h3>Telemetria de Nível de Água</h3>
+                        <p class="case-subtitle">Gestão automática de reservatórios</p>
+                        <p class="case-description">Sensores de bóia conectados via LoRa/Zigbee para monitorar cisternas e tanques industriais. Alertas via MQTT quando os níveis atingem limites críticos.</p>
                         
                         <div class="case-results">
                             <div class="result-item">
@@ -1944,22 +1853,19 @@
                             <span class="tag">Zigbee</span>
                             <span class="tag">Telemetria</span>
                         </div>
-                        <a href="https://wa.me/5519989863293?text=Olá!+Quero+saber+mais+sobre+monitoramento+de+nível" class="case-whatsapp" target="_blank">
-                            💬 Falar sobre Telemetria
-                        </a>
                     </div>
                 </div>
 
-                <!-- Case 5: Monitoramento de Vibração -->
+                <!-- Case 3: Monitoramento de Vibração -->
                 <div class="case-card animate-on-scroll">
                     <div class="case-badge">LoRaWAN</div>
                     <div class="case-image">
                         <img src="assets/cases/sensor-vibracao.jpg" alt="Sensor NIT 21LV - Vibração">
                     </div>
                     <div class="case-content">
-                        <h3>Monitoramento de Vibração com LoRaWAN</h3>
-                        <p class="case-subtitle">Detecção preditiva de falhas em motores</p>
-                        <p class="case-description">Instalação do sensor <strong>NIT 21LV</strong> para medição de vibração e temperatura em motores industriais. Os dados são enviados via LoRaWAN para a nuvem, permitindo manutenção preditiva.</p>
+                        <h3>Monitoramento de Vibração</h3>
+                        <p class="case-subtitle">Manutenção preditiva em motores</p>
+                        <p class="case-description">Sensor <strong>NIT 21LV</strong> para medição de vibração e temperatura em motores industriais. Dados via LoRaWAN para manutenção preditiva.</p>
                         
                         <div class="case-results">
                             <div class="result-item">
@@ -1974,62 +1880,20 @@
                         
                         <div class="case-tags">
                             <span class="tag">LoRaWAN</span>
-                            <span class="tag">MQTT</span>
-                            <span class="tag">Manutenção Preditiva</span>
+                            <span class="tag">NIT 21LV</span>
+                            <span class="tag">Preditiva</span>
                         </div>
-                        <a href="https://wa.me/5519989863293?text=Olá!+Quero+saber+mais+sobre+monitoramento+de+vibração" class="case-whatsapp" target="_blank">
-                            💬 Falar sobre Manutenção Preditiva
-                        </a>
                     </div>
                 </div>
-
-                <!-- Case 6: Agricultura Inteligente -->
-                <div class="case-card animate-on-scroll">
-                    <div class="case-badge">LoRaWAN</div>
-                    <div class="case-image">
-                        <img src="assets/cases/agricultura-cafe.jpg" alt="Monitoramento de Silos - Café">
-                    </div>
-                    <div class="case-content">
-                        <h3>Agricultura Inteligente: Silos de Café</h3>
-                        <p class="case-subtitle">Secado preciso de cafés especiais - SP</p>
-                        <p class="case-description">Fazenda com 8 silos de 300.000L automatizou o controle usando <strong>Gateway ITG 201</strong>, <strong>NIT21LI</strong> e <strong>sensores THW 100</strong>. Medições a cada hora em 3 alturas por silo.</p>
-                        
-                        <div class="case-results">
-                            <div class="result-item">
-                                <span class="result-icon">⏱️</span>
-                                <span class="result-text">-90% tempo de medições manuais</span>
-                            </div>
-                            <div class="result-item">
-                                <span class="result-icon">📊</span>
-                                <span class="result-text">Trazabilidade digital completa</span>
-                            </div>
-                        </div>
-                        
-                        <div class="case-tags">
-                            <span class="tag">LoRaWAN</span>
-                            <span class="tag">ITG 201</span>
-                            <span class="tag">Agro 4.0</span>
-                        </div>
-                        <a href="https://wa.me/5519989863293?text=Olá!+Quero+saber+mais+sobre+IoT+para+agricultura" class="case-whatsapp" target="_blank">
-                            💬 Falar sobre Agro IoT
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="cases-cta">
-                <h3>💡 Sua operação também pode ter esses resultados</h3>
-                <p>Entre em contato e descubra qual solução IoT é ideal para o seu negócio</p>
-                <a href="https://wa.me/5519989863293?text=Olá!+Quero+conhecer+as+soluções+IoT+da+Contrologic+Solutions" class="btn-cases-cta" target="_blank">Falar com Especialista no WhatsApp →</a>
             </div>
         </div>
     </section>
 
-    <!-- OEE Impact Section -->
+    <!-- OEE Impact - Resumido -->
     <section class="oee-impact">
         <div class="container">
-            <h2 class="section-title" style="color: white;">📊 Impacto Real em <span class="highlight">Eficiência Operacional (OEE)</span></h2>
-            <p class="section-subtitle" style="color: #CCC;">A combinação de sensores, automação e conectividade industrial resultou em ganhos reais de OEE em nossos projetos de digitalização.</p>
+            <h2 class="section-title" style="color: white;">Projetos de <span class="highlight">Digitalização de OEE</span></h2>
+            <p class="section-subtitle" style="color: #CCC;">Ganhos reais de produtividade com sensores IoT e automação industrial</p>
             
             <div class="oee-grid">
                 <!-- OEE Case 1 -->
@@ -2103,31 +1967,6 @@
                 <h3>🚀 Sua fábrica também pode alcançar esses resultados</h3>
                 <p>Agende seu diagnóstico gratuito e descubra como aplicar IoT para aumentar seu OEE.</p>
                 <a href="#contato" class="btn-oee-cta">Quero Melhorar Meu OEE →</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Prova Social -->
-    <section class="prova-social" id="prova">
-        <h2 class="section-title" style="color: white;">Resultados que <span class="highlight">comprovamos</span></h2>
-        <p class="section-subtitle" style="color: #CCC;">Impacto real nas operações dos nossos clientes</p>
-        
-        <div class="prova-grid">
-            <div class="prova-item animate-on-scroll">
-                <span class="prova-numero">+35%</span>
-                <span class="prova-texto">Aumento médio de produtividade</span>
-            </div>
-            <div class="prova-item animate-on-scroll">
-                <span class="prova-numero">-45%</span>
-                <span class="prova-texto">Redução de tempo parado</span>
-            </div>
-            <div class="prova-item animate-on-scroll">
-                <span class="prova-numero">50+</span>
-                <span class="prova-texto">Projetos entregues</span>
-            </div>
-            <div class="prova-item animate-on-scroll">
-                <span class="prova-numero">100%</span>
-                <span class="prova-texto">Clientes satisfeitos</span>
             </div>
         </div>
     </section>
@@ -2223,5 +2062,15 @@
             observer.observe(el);
         });
     </script>
+
+    <!-- WhatsApp Flutuante -->
+    <a href="https://wa.me/5519989863293?text=Olá!+Vim+pelo+site+e+quero+saber+mais+sobre+as+soluções+da+Contrologic" class="whatsapp-float" target="_blank" aria-label="Fale conosco no WhatsApp">
+        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16 0C7.163 0 0 7.163 0 16C0 19.007 0.875 21.815 2.375 24.22L0.827 30.173C0.736 30.518 0.857 30.886 1.143 31.116C1.319 31.259 1.534 31.333 1.75 31.333C1.87 31.333 1.991 31.312 2.107 31.268L8.295 29.511C10.594 30.822 13.216 31.556 16 31.556C24.837 31.556 32 24.837 32 16C32 7.163 24.837 0 16 0Z" fill="white"/>
+            <path d="M23.317 19.357C22.955 19.167 21.146 18.278 20.813 18.159C20.479 18.041 20.236 17.982 19.993 18.346C19.75 18.709 19.054 19.543 18.841 19.787C18.628 20.031 18.414 20.061 18.053 19.871C17.691 19.681 16.545 19.317 15.198 18.118C14.143 17.186 13.428 16.032 13.215 15.669C13.002 15.306 13.189 15.111 13.378 14.922C13.548 14.752 13.758 14.479 13.948 14.266C14.137 14.053 14.197 13.899 14.315 13.655C14.434 13.411 14.375 13.198 14.281 13.009C14.186 12.819 13.474 11.004 13.171 10.277C12.877 9.574 12.578 9.667 12.356 9.656C12.146 9.646 11.903 9.644 11.66 9.644C11.416 9.644 11.023 9.739 10.689 10.102C10.356 10.466 9.407 11.355 9.407 13.17C9.407 14.985 10.72 16.741 10.909 16.985C11.099 17.229 13.425 20.872 17.021 22.455C17.888 22.831 18.564 23.059 19.092 23.229C19.962 23.508 20.751 23.468 21.373 23.37C22.068 23.261 23.528 22.485 23.83 21.635C24.133 20.785 24.133 20.061 24.039 19.9C23.945 19.74 23.679 19.546 23.317 19.357Z" fill="white"/>
+        </svg>
+        <span class="whatsapp-pulse"></span>
+    </a>
+
 </body>
 </html>
